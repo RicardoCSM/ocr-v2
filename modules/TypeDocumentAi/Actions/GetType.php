@@ -1,36 +1,36 @@
 <?php
 
-namespace Modules\IdentificationDocumentAi\Actions;
+namespace Modules\TypeDocumentAi\Actions;
 
 use Modules\Common\Actions\ProcessDocument;
 use Modules\Common\Actions\RepeatedFieldToArray;
 use Modules\Common\DTOs\DocumentAiDTO;
 use Modules\Common\Exceptions\InvalidDocumentException;
 
-final readonly class GetCpf
+final readonly class GetType
 {
     public function __construct(
         private ProcessDocument $processDocument,
         private RepeatedFieldToArray $repeatedFieldToArray,
-        private BuildCpf $buildCpf,
+        private BuildType $buildType,
     )
     {
     }
 
     public function handle(DocumentAiDTO $dto): array
     {
-        $processorId = env('DOCUMENT_AI_CPF_PROCESSOR_ID');
+        $processorId = env('DOCUMENT_AI_TYPE_PROCESSOR_ID');
         $document = $this->processDocument->handle($dto, $processorId);
         $entities = $this->repeatedFieldToArray->handle($document->getEntities());
 
-        $cpf = $this->buildCpf->handle($entities);
+        $type = $this->buildType->handle($entities);
 
-        if($cpf == null) {
+        if($type == null) {
             throw new InvalidDocumentException;
         }
 
         return [
-            'cpf' => $cpf,
+            'type' => $type,
         ];
     }
 }

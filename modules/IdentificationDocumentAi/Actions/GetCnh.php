@@ -5,6 +5,7 @@ namespace Modules\IdentificationDocumentAi\Actions;
 use Modules\Common\Actions\ProcessDocument;
 use Modules\Common\Actions\RepeatedFieldToArray;
 use Modules\Common\DTOs\DocumentAiDTO;
+use Modules\Common\Exceptions\InvalidDocumentException;
 
 final readonly class GetCnh
 {
@@ -23,6 +24,11 @@ final readonly class GetCnh
         $entities = $this->repeatedFieldToArray->handle($document->getEntities());
 
         $cnhData = $this->buildCnh->handle($entities);
+
+        if($cnhData == null) {
+            throw new InvalidDocumentException;
+        }
+
         return $cnhData;
     }
 }
