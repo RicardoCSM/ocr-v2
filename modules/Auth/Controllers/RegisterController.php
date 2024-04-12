@@ -10,8 +10,8 @@ use Modules\Auth\DTOs\RegisterDTO;
 use Modules\Auth\Resources\UserResource;
 use Modules\Common\Http\Responses\ApiSuccessResponse;
 
-class RegisterController extends Controller {
-
+class RegisterController extends Controller 
+{
     public function register(Request $request, Register $action): ApiSuccessResponse
     {
         return new ApiSuccessResponse(
@@ -19,5 +19,4 @@ class RegisterController extends Controller {
             Response::HTTP_CREATED
         );
     }
-
 }

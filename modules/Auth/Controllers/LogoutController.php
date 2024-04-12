@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Modules\Common\Http\Responses\NoContentResponse;
 
-class LogoutController extends Controller {
-
+class LogoutController extends Controller
+{
     public function logout(Request $request): NoContentResponse
     {
         $user = $request->user();
@@ -15,5 +15,4 @@ class LogoutController extends Controller {
 
         return new NoContentResponse();
     }
-
 }
