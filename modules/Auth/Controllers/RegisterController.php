@@ -8,7 +8,7 @@ use Illuminate\Http\Response;
 use Modules\Auth\Actions\Register;
 use Modules\Auth\DTOs\RegisterDTO;
 use Modules\Auth\Resources\UserResource;
-use Modules\Common\Http\Responses\ApiSuccessResponse;
+use Modules\Common\Responses\ApiSuccessResponse;
 
 class RegisterController extends Controller 
 {

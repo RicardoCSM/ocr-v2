@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Common\Http\Responses;
+namespace Modules\Common\Responses;
 
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\JsonResponse;
@@ -19,7 +19,10 @@ readonly class ApiSuccessResponse implements Responsable
     public function toResponse($request): JsonResponse
     {
         return response()->json(
-            $this->resource->toArray($request),
+            [
+                'status' => true,
+                'result' => $this->resource->toArray($request)
+            ],
             $this->code,
             $this->headers
         );

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Modules\Auth\Actions\Login;
 use Modules\Auth\DTOs\LoginDTO;
 use Modules\Auth\Resources\LoginResource;
-use Modules\Common\Http\Responses\ApiSuccessResponse;
+use Modules\Common\Responses\ApiSuccessResponse;
 
 class LoginController extends Controller 
 {

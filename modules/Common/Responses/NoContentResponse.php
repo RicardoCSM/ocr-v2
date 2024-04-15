@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Common\Http\Responses;
+namespace Modules\Common\Responses;
 
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Response;

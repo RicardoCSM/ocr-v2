@@ -5,14 +5,13 @@ namespace Modules\IdentificationDocumentAi\Actions;
 use Modules\Common\Actions\FormatDate;
 use Modules\Common\Actions\FormatLocal;
 use Modules\Common\Actions\GetValueByType;
+use Modules\Common\Support\TreatData;
 
 final readonly class BuildIdentity
 {
     public function __construct(
         private GetValueByType $getValueByType,
-        private BuildCpf $buildCpf,
-        private FormatDate $formatDate,
-        private FormatLocal $formatLocal
+        private BuildCpf $buildCpf
     )
     {
     }
@@ -25,9 +24,9 @@ final readonly class BuildIdentity
             return null;
         }
 
-        $expeditionDate = $this->formatDate->handle($this->getValueByType->handle($entities, 'data-expedicao'));
-        $birthDate =  $this->formatDate->handle($this->getValueByType->handle($entities, 'data-nascimento'));
-        $placeOfBirth = $this->formatLocal->handle($this->getValueByType->handle($entities, 'naturalidade'));
+        $expeditionDate = TreatData::formatDate($this->getValueByType->handle($entities, 'data-expedicao'));
+        $birthDate =  TreatData::formatDate($this->getValueByType->handle($entities, 'data-nascimento'));
+        $placeOfBirth = TreatData::formatLocal($this->getValueByType->handle($entities, 'naturalidade'));
 
         return [
             'nome' => $this->getValueByType->handle($entities, 'nome'),

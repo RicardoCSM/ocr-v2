@@ -5,7 +5,7 @@ namespace Modules\IdentificationDocumentAi\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Modules\Common\DTOs\DocumentAiDTO;
-use Modules\Common\Http\Responses\ApiSuccessResponse;
+use Modules\Common\Responses\ApiSuccessResponse;
 use Modules\IdentificationDocumentAi\Actions\GetCnh;
 use Modules\IdentificationDocumentAi\Actions\GetCpf;
 use Modules\IdentificationDocumentAi\Actions\GetIdentity;

@@ -12,8 +12,8 @@ use Modules\Auth\Actions\UpdateUser;
 use Modules\Auth\DTOs\UpdateUserDTO;
 use Modules\Auth\Resources\UserResource;
 use Modules\Common\DTOs\DatatableDTO;
-use Modules\Common\Http\Responses\ApiSuccessResponse;
-use Modules\Common\Http\Responses\NoContentResponse;
+use Modules\Common\Responses\ApiSuccessResponse;
+use Modules\Common\Responses\NoContentResponse;
 
 class UserController extends Controller
 {

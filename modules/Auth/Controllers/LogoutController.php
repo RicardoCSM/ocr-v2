@@ -4,7 +4,7 @@ namespace Modules\Auth\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Modules\Common\Http\Responses\NoContentResponse;
+use Modules\Common\Responses\NoContentResponse;
 
 class LogoutController extends Controller
 {
