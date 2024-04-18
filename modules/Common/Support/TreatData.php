@@ -43,8 +43,10 @@ readonly class TreatData
             '/([\p{L}\s]+)\s?\/\s?([\p{L}\s]{2,})/iu',
             '/([\p{L}\s]+)\s?-\s?([\p{L}]{2})/iu',
             '/([\p{L}\s]+)-([\p{L}]{2})/iu',
-            '/([\p{L}\s]+)([\p{L}]{2})/iu',
             '/([\p{L}\s]+)\s?[\.\-]\s?([\p{L}]{2})/iu',
+            '/([\p{L}\s]+),?\s?([\p{L}]{2})/iu',
+            '/([\p{L}\s]+)\s?,\s?([\p{L}]{2})/iu',
+            '/([\p{L}\s]+)([\p{L}]{2})/iu',
         ];
 
         foreach ($patterns as $pattern) {

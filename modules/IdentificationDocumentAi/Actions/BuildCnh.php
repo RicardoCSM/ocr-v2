@@ -25,6 +25,7 @@ final readonly class BuildCnh
 
         $issueDate = TreatData::formatDate($this->getValueByType->handle($entities, 'data-emissao'));
         $birthDate =  TreatData::formatDate($this->getValueByType->handle($entities, 'data-nascimento'));
+        $placeOfRegister = TreatData::formatLocal($this->getValueByType->handle($entities, 'local'));
 
         return [
             'nome' => $this->getValueByType->handle($entities, 'nome'),
@@ -39,7 +40,7 @@ final readonly class BuildCnh
             'nome_pai' => $this->getValueByType->handle($entities, 'nome-pai'),
             'data_nascimento' => $birthDate,
             'observacoes' => $this->getValueByType->handle($entities, 'observacoes'),
-            'local' => $this->getValueByType->handle($entities, 'local'),
+            'local' => $placeOfRegister,
             'num_registro' => $this->getValueByType->handle($entities, 'num-registro'),
         ];
     }
