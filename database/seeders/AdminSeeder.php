@@ -14,10 +14,14 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
+        $adminName = env('ADMIN_NAME');
+        $adminEmail = env('ADMIN_EMAIL');
+        $adminPassword = env('ADMIN_PASSWORD');
+
         $user = User::create([
-            'name' => 'Admin',
-            'email' => 'admin@example.com',
-            'password' => Hash::make('password'),
+            'name' => $adminName,
+            'email' => $adminEmail,
+            'password' => Hash::make($adminPassword),
         ]);
 
         $role = Role::findByName('admin');
