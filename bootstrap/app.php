@@ -6,7 +6,9 @@ use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Validation\ValidationException;
 use Spatie\Permission\Exceptions\UnauthorizedException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -35,16 +37,34 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->render(function (AuthenticationException $e, Request $request) {
             if ($request->is('v1/*')) {
                 return response()->json([
-                    'success' => false,
+                    'status' => false,
                     'message' => 'Unauthenticated.'
                 ], 401);
+            }
+        });
+
+        $exceptions->render(function (ValidationException $e, Request $request) {
+            if ($request->is('v1/*')) {
+                return response()->json([
+                    'status' => false,
+                    'message' => $e->errors() 
+                ], 401);
+            }
+        });
+
+        $exceptions->render(function (NotFoundHttpException $e, Request $request) {
+            if ($request->is('v1/*')) {
+                return response()->json([
+                    'status' => false,
+                    'message' => $e->getMessage()
+                ], 404);
             }
         });
 
         $exceptions->render(function (UnauthorizedException $e, Request $request) {
             if ($request->is('v1/*')) {
                 return response()->json([
-                    'success' => false,
+                    'status' => false,
                     'message' => 'You do not have required authorization.',
                 ], 403);
             }

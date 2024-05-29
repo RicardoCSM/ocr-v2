@@ -22,12 +22,7 @@ class RegisterDTO extends ValidatedDTO
             'email' => ['required', 'email', Rule::unique(User::class)],
             'password' => [
                 'required',
-                Password::min(8)
-                    ->letters()
-                    ->mixedCase()
-                    ->numbers()
-                    ->symbols()
-                    ->uncompromised(),
+                Password::min(8),
                 'confirmed',
             ],
         ];
